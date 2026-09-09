@@ -1,0 +1,479 @@
+{
+  "siteContent": [
+    {
+      "id": "cnt-1",
+      "section": "home",
+      "field_key": "hero_title",
+      "field_label": "Hero Title",
+      "content": "Helping and teaching everyone to make more from less.",
+      "content_type": "text",
+      "status": "active",
+      "updated_at": "2026-09-09T06:49:09.644Z",
+      "updated_by": "Gold Trader John (Admin)"
+    },
+    {
+      "id": "cnt-2",
+      "section": "home",
+      "field_key": "hero_subtitle",
+      "field_label": "Hero Subtitle",
+      "content": "Structured Commodities & Gold Mentorship, Institutional Signals, and Capital Management Partnerships.",
+      "content_type": "text",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "cnt-3",
+      "section": "home",
+      "field_key": "hero_description",
+      "field_label": "Hero Description",
+      "content": "Master disciplined technical analysis, high-probability execution, and capital preservation with Gold Trader John.",
+      "content_type": "textarea",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "cnt-4",
+      "section": "home",
+      "field_key": "hero_cta_primary",
+      "field_label": "Primary CTA Text",
+      "content": "Start Your Journey",
+      "content_type": "text",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "cnt-5",
+      "section": "about",
+      "field_key": "about_title",
+      "field_label": "About Title",
+      "content": "Disciplined Trading. Proven Risk Controls.",
+      "content_type": "text",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "cnt-6",
+      "section": "about",
+      "field_key": "about_description",
+      "field_label": "About Description",
+      "content": "Gold Trader John is a seasoned commodities and currency analyst dedicated to helping traders achieve consistent execution through structured rules, risk management, and strategic market patience.",
+      "content_type": "textarea",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "cnt-7",
+      "section": "about",
+      "field_key": "about_experience",
+      "field_label": "Experience Overview",
+      "content": "Over a decade navigating complex market cycles, price action imbalances, and liquidity zones across global gold and forex markets.",
+      "content_type": "textarea",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "cnt-8",
+      "section": "about",
+      "field_key": "about_risk_management",
+      "field_label": "Risk Management Philosophy",
+      "content": "Capital preservation precedes capital expansion. Strict maximum drawdown limits and measured position sizing protect our community through all volatility regimes.",
+      "content_type": "textarea",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "cnt-9",
+      "section": "student",
+      "field_key": "student_min_deposit",
+      "field_label": "Trading Student Minimum Capital",
+      "content": "$50",
+      "content_type": "text",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "cnt-10",
+      "section": "mentee",
+      "field_key": "mentee_min_deposit",
+      "field_label": "Trading Mentee Minimum Capital",
+      "content": "$200",
+      "content_type": "text",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "cnt-11",
+      "section": "partner",
+      "field_key": "partner_min_deposit",
+      "field_label": "Investment Partnership Minimum Deposit",
+      "content": "$300",
+      "content_type": "text",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "cnt-12",
+      "section": "contact",
+      "field_key": "broker_url",
+      "field_label": "Recommended Broker URL",
+      "content": "https://track.account.xellion.com/?t=8fw9LoxmvtMQ",
+      "content_type": "url",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    }
+  ],
+  "programs": [
+    {
+      "id": "prg-1",
+      "program_key": "student",
+      "program_name": "Trading Student",
+      "short_description": "General & VIP Signals Access while developing your market edge.",
+      "minimum_amount": "$50",
+      "requirements": "Minimum $50 broker account balance. Registration completed via authorized broker onboarding portal.",
+      "bonus_text": "Eligible users may receive a promotional 120% first-deposit bonus from the broker, subject to broker terms and trading volume conditions.",
+      "profit_sharing_text": "Weekly profit-sharing terms apply while following signals or developing under mentorship.",
+      "disclaimer": "Trading financial markets involves substantial risk of loss and is not suitable for every investor. Profits are never guaranteed.",
+      "cta_text": "Apply as Student",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "prg-2",
+      "program_key": "mentee",
+      "program_name": "Trading Mentee",
+      "short_description": "1-on-1 Structured 5-Stage Trader Development & Strategy Mastery.",
+      "minimum_amount": "$200",
+      "requirements": "Minimum $200 capital balance. Dedication to structured technical, fundamental, and risk management modules.",
+      "bonus_text": "The promotional 120% bonus is subject to broker eligibility, terms, and trading turnover requirements.",
+      "profit_sharing_text": "Weekly profit-sharing terms while following signals or developing under direct mentorship.",
+      "disclaimer": "Mentorship provides educational guidance and market analysis. Past performance is no guarantee of future returns.",
+      "cta_text": "Apply for Mentorship",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    },
+    {
+      "id": "prg-3",
+      "program_key": "partner",
+      "program_name": "Investment Partnership",
+      "short_description": "50/50 Capital Trading Management Partnership under agreed terms.",
+      "minimum_amount": "$300",
+      "requirements": "Minimum $300 broker deposit on authorized platform. Strictly no self-trading or interference on managed account.",
+      "bonus_text": "Promotional first-deposit bonus available subject to broker terms and client eligibility criteria.",
+      "profit_sharing_text": "50/50 profit sharing arrangement on realized net withdrawals. Zero upfront management fees.",
+      "disclaimer": "Trading capital is at risk. Never allocate funds you cannot afford to lose. Non-interference agreement is strictly enforced.",
+      "cta_text": "Apply for Partnership",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z",
+      "updated_by": "System"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "ct-1",
+      "contact_type": "telegram_channel",
+      "label": "Official Telegram Channel",
+      "value": "@goldtraderjohn1",
+      "url": "https://t.me/goldtraderjohn1",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z"
+    },
+    {
+      "id": "ct-2",
+      "contact_type": "telegram_direct",
+      "label": "Direct Mentor Line (Telegram)",
+      "value": "@goldtraderjohn01",
+      "url": "https://t.me/goldtraderjohn01",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z"
+    },
+    {
+      "id": "ct-3",
+      "contact_type": "whatsapp_direct",
+      "label": "Direct WhatsApp Line",
+      "value": "+234 704 643 8161",
+      "url": "https://wa.me/2347046438161",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z"
+    },
+    {
+      "id": "ct-4",
+      "contact_type": "whatsapp_group",
+      "label": "Official WhatsApp Community Group",
+      "value": "Gold Trader John Trading World Hub",
+      "url": "https://chat.whatsapp.com/KWnld9kAbBN0sn7npUnYeN",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z"
+    },
+    {
+      "id": "ct-6",
+      "contact_type": "TikTok",
+      "label": "TikTok Profile",
+      "value": "@gold.trader.john",
+      "url": "https://www.tiktok.com/@gold.trader.john?_r=1&_t=ZN-99aAz1s1cjW",
+      "platform": "TikTok",
+      "display_name": "TikTok Profile",
+      "username": "@gold.trader.john",
+      "status": "active",
+      "updated_at": "2026-09-09T07:44:27.959Z"
+    },
+    {
+      "id": "ct-5",
+      "contact_type": "recommended_broker",
+      "label": "Recommended Broker Account Registration",
+      "value": "Xellion Global Onboarding Portal",
+      "url": "https://track.account.xellion.com/?t=8fw9LoxmvtMQ",
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z"
+    }
+  ],
+  "faq": [
+    {
+      "id": "faq-1",
+      "question": "What is the minimum capital required to get started as a Trading Student?",
+      "answer": "The minimum broker account balance is $50. Once registered and funded with our recommended broker, you gain full access to both general market setups and VIP execution alerts.",
+      "category": "Programs",
+      "display_order": 1,
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z"
+    },
+    {
+      "id": "faq-2",
+      "question": "How do I claim the 120% First Deposit Bonus from the broker?",
+      "answer": "Eligible clients who register an account through our authorized broker link can receive a promotional 120% deposit match, subject to broker eligibility and turnover criteria. Contact Gold Trader John directly via Telegram or WhatsApp for activation assistance.",
+      "category": "Broker & Promotion",
+      "display_order": 2,
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z"
+    },
+    {
+      "id": "faq-3",
+      "question": "How is the 50/50 Investment Partnership managed?",
+      "answer": "Your capital remains securely held under your own verified personal broker account. We execute institutional commodity setups on your behalf according to strict stop-loss rules. The 50/50 profit split applies only to realized net withdrawal profits.",
+      "category": "Partnership",
+      "display_order": 3,
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z"
+    },
+    {
+      "id": "faq-4",
+      "question": "Why is account interference strictly prohibited for Investment Partners?",
+      "answer": "Our risk models rely on mathematically calculated lot sizes, stop-losses, and hedging zones. Any external manual order entry or trade closure alters risk calculations and automatically terminates the management agreement.",
+      "category": "Risk & Rules",
+      "display_order": 4,
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z"
+    },
+    {
+      "id": "faq-5",
+      "question": "Are trading profits guaranteed?",
+      "answer": "No. Financial trading involves inherent market risk and potential loss of capital. While Gold Trader John applies disciplined risk-reward parameters (aiming for 1:2 or better), profits are never guaranteed.",
+      "category": "Risk & Rules",
+      "display_order": 5,
+      "status": "active",
+      "updated_at": "2026-09-09T06:48:43.055Z"
+    }
+  ],
+  "settings": {
+    "website_name": "Gold Trader John Trading World",
+    "logo": "/logo.png",
+    "favicon": "/favicon.ico",
+    "primary_color": "#2563eb",
+    "secondary_color": "#f59e0b",
+    "support_email": "support@goldtraderjohn.com",
+    "phone": "+234 704 643 8161",
+    "maintenance_mode": false,
+    "registration_enabled": true,
+    "student_program_enabled": true,
+    "mentee_program_enabled": true,
+    "investor_program_enabled": true,
+    "google_sheets_url": "",
+    "google_sheets_configured": false
+  },
+  "applications": [
+    {
+      "fullName": "David Miller",
+      "email": "david.miller@example.com",
+      "phone": "+12025550199",
+      "telegramUsername": "",
+      "country": "United States",
+      "age": 28,
+      "program": "student",
+      "tradingExperience": "Beginner",
+      "brokerRegistrationStatus": "Not yet registered",
+      "proposedInvestmentAmount": "",
+      "maxLossWilling": "",
+      "hadManagedAccountBefore": "No",
+      "checkboxRiskNotGuaranteed": true,
+      "checkboxProfitSharing": true,
+      "checkboxAffordToLose": true,
+      "checkboxNoInterference": false,
+      "id": "APP-20260909-8406",
+      "createdAt": "2026-09-09T06:48:46.673Z",
+      "status": "Under Review",
+      "adminNotes": "Reviewed credentials; preparing onboarding packet."
+    },
+    {
+      "id": "APP-20260908-003",
+      "createdAt": "2026-09-09T00:48:43.055Z",
+      "fullName": "Emmanuel Nwosu",
+      "email": "enwosu.fx@gmail.com",
+      "phone": "+234 816 555 0192",
+      "telegramUsername": "@emmanwosufx",
+      "country": "Nigeria",
+      "age": 23,
+      "program": "student",
+      "tradingExperience": "Intermediate",
+      "brokerRegistrationStatus": "Yes, registered",
+      "checkboxRiskNotGuaranteed": true,
+      "checkboxProfitSharing": true,
+      "checkboxAffordToLose": true,
+      "status": "Approved",
+      "adminNotes": "Completed broker sign up. Invited to VIP telegram channel."
+    },
+    {
+      "id": "APP-20260908-002",
+      "createdAt": "2026-09-08T06:48:43.055Z",
+      "fullName": "Sarah Jenkins",
+      "email": "s.jenkins@trademail.co.uk",
+      "phone": "+44 7700 900451",
+      "telegramUsername": "@sjenkins_trader",
+      "country": "United Kingdom",
+      "age": 34,
+      "program": "partner",
+      "tradingExperience": "Intermediate",
+      "brokerRegistrationStatus": "Yes, registered",
+      "proposedInvestmentAmount": "$15,000",
+      "maxLossWilling": "15% ($2,250 max drawdown)",
+      "hadManagedAccountBefore": "No",
+      "checkboxRiskNotGuaranteed": true,
+      "checkboxProfitSharing": true,
+      "checkboxAffordToLose": true,
+      "checkboxNoInterference": true,
+      "status": "Contacted",
+      "adminNotes": "Spoke on Telegram. Sent partnership terms and risk overview document."
+    },
+    {
+      "id": "APP-20260908-001",
+      "createdAt": "2026-09-07T06:48:43.055Z",
+      "fullName": "David Adeleke",
+      "email": "david.adeleke@example.com",
+      "phone": "+234 803 219 4488",
+      "telegramUsername": "@davidadeleke",
+      "country": "Nigeria",
+      "age": 27,
+      "program": "mentee",
+      "tradingExperience": "Beginner",
+      "brokerRegistrationStatus": "Yes, registered",
+      "checkboxRiskNotGuaranteed": true,
+      "checkboxProfitSharing": true,
+      "checkboxAffordToLose": true,
+      "status": "Under Review",
+      "adminNotes": "Registered with broker link. Awaiting deposit confirmation for mentorship access."
+    }
+  ],
+  "auditLogs": [
+    {
+      "log_id": "LOG-1788939867959-154",
+      "timestamp": "2026-09-09T07:44:27.959Z",
+      "admin": "Gold Trader John (Admin)",
+      "action": "UPDATE",
+      "section": "CONTACTS",
+      "record_id": "TikTok",
+      "old_value": "@gold.trader.john | https://www.tiktok.com/@gold.trader.john?_r=1&_t=ZN-99aAz1s1cjW | active",
+      "new_value": "@gold.trader.john | https://www.tiktok.com/@gold.trader.john?_r=1&_t=ZN-99aAz1s1cjW | active"
+    },
+    {
+      "log_id": "LOG-1788939867947-233",
+      "timestamp": "2026-09-09T07:44:27.947Z",
+      "admin": "Gold Trader John (Admin)",
+      "action": "STATUS_CHANGE",
+      "section": "ADMIN_AUTH",
+      "record_id": "SESSION",
+      "old_value": "None",
+      "new_value": "Admin signed in successfully"
+    },
+    {
+      "log_id": "LOG-1788939849094-878",
+      "timestamp": "2026-09-09T07:44:09.094Z",
+      "admin": "Gold Trader John (Admin)",
+      "action": "UPDATE",
+      "section": "CONTACTS",
+      "record_id": "TikTok",
+      "old_value": "@gold.trader.john | https://www.tiktok.com/@gold.trader.john?_r=1&_t=ZN-99aAz1s1cjW | active",
+      "new_value": "@gold.trader.john | https://www.tiktok.com/@gold.trader.john?_r=1&_t=ZN-99aAz1s1cjW | active"
+    },
+    {
+      "log_id": "LOG-1788939849082-204",
+      "timestamp": "2026-09-09T07:44:09.082Z",
+      "admin": "Gold Trader John (Admin)",
+      "action": "STATUS_CHANGE",
+      "section": "ADMIN_AUTH",
+      "record_id": "SESSION",
+      "old_value": "None",
+      "new_value": "Admin signed in successfully"
+    },
+    {
+      "log_id": "LOG-1788936549644-191",
+      "timestamp": "2026-09-09T06:49:09.644Z",
+      "admin": "Gold Trader John (Admin)",
+      "action": "UPDATE",
+      "section": "SITE_CONTENT",
+      "record_id": "hero_title",
+      "old_value": "Helping and teaching everyone to make more from less.",
+      "new_value": "Helping and teaching everyone to make more from less."
+    },
+    {
+      "log_id": "LOG-1788936541349-23",
+      "timestamp": "2026-09-09T06:49:01.349Z",
+      "admin": "Gold Trader John (Admin)",
+      "action": "STATUS_CHANGE",
+      "section": "APPLICATIONS",
+      "record_id": "APP-20260909-8406",
+      "old_value": "New",
+      "new_value": "Under Review"
+    },
+    {
+      "log_id": "LOG-1788936537697-778",
+      "timestamp": "2026-09-09T06:48:57.697Z",
+      "admin": "Gold Trader John (Admin)",
+      "action": "STATUS_CHANGE",
+      "section": "ADMIN_AUTH",
+      "record_id": "SESSION",
+      "old_value": "None",
+      "new_value": "Admin signed in successfully"
+    },
+    {
+      "log_id": "LOG-1788936526673-111",
+      "timestamp": "2026-09-09T06:48:46.673Z",
+      "admin": "System",
+      "action": "CREATE",
+      "section": "APPLICATIONS",
+      "record_id": "APP-20260909-8406",
+      "old_value": "None",
+      "new_value": "New application by David Miller (student)"
+    },
+    {
+      "log_id": "LOG-INIT-1",
+      "timestamp": "2026-09-07T06:48:43.055Z",
+      "admin": "System",
+      "action": "CREATE",
+      "section": "SETTINGS",
+      "record_id": "GLOBAL",
+      "old_value": "None",
+      "new_value": "Initialized CMS data store"
+    }
+  ]
+}
