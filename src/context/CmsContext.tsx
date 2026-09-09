@@ -7,7 +7,7 @@ import {
   GlobalSettings, 
   ApplicationData 
 } from '../types';
-import { cmsApi, getAdminToken } from '../services/apiClient';
+import { cmsApi } from '../services/apiClient';
 
 interface CmsContextType {
   contentMap: Record<string, string>;
@@ -55,7 +55,7 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Admin state
   const [adminUser, setAdminUser] = useState<any | null>(null);
-  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(Boolean(getAdminToken()));
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(false);
 
   const loadAllCmsData = useCallback(async () => {
     try {

@@ -7,37 +7,22 @@ import {
   ApplicationData, 
   AuditLogEntry, 
   AdminStats,
-  SystemIntegrationStatus
+  SystemIntegrationStatus,
+  SystemConfigAudit
 } from '../types';
 
-const ADMIN_TOKEN_KEY = 'gtj_admin_token_v1';
 const CACHE_KEY_CONTENT = 'gtj_cms_content_cache';
 const CACHE_KEY_PROGRAMS = 'gtj_cms_programs_cache';
 const CACHE_KEY_CONTACTS = 'gtj_cms_contacts_cache';
 const CACHE_KEY_FAQ = 'gtj_cms_faq_cache';
 const CACHE_KEY_SETTINGS = 'gtj_cms_settings_cache';
 
-export const getAdminToken = (): string | null => {
-  return localStorage.getItem(ADMIN_TOKEN_KEY);
-};
-
-export const setAdminToken = (token: string): void => {
-  localStorage.setItem(ADMIN_TOKEN_KEY, token);
-};
-
-export const clearAdminToken = (): void => {
-  localStorage.removeItem(ADMIN_TOKEN_KEY);
-};
-
+// Admin authentication uses secure server-side HttpOnly cookies with credentials: 'include'.
+// No tokens or credentials are EVER stored in localStorage, sessionStorage, or client memory.
 const getAuthHeaders = (): HeadersInit => {
-  const token = getAdminToken();
-  const headers: Record<string, string> = {
+  return {
     'Content-Type': 'application/json',
   };
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
-  }
-  return headers;
 };
 
 // Safe fetch wrapper with credentials: 'include' for HttpOnly cookie support
@@ -137,16 +122,25 @@ export const cmsApi = {
     }
   },
 
-  async login(password: string, email?: string): Promise<{ success: boolean; token: string; user: any }> {
-    const res = await safeFetch<{ success: boolean; token: string; user: any }>('/api/admin/login', {
+  // Configuration Audit (Public & Safe)
+  async getConfigAudit(): Promise<SystemConfigAudit> {
+    const res = await safeFetch<{ success: boolean } & SystemConfigAudit>('/api/system/config-status');
+    return {
+      timestamp: res.timestamp,
+      nodeEnv: res.nodeEnv,
+      adminAuthConfigured: res.adminAuthConfigured,
+      googleSheetsUrlConfigured: res.googleSheetsUrlConfigured,
+      appsScriptSecretConfigured: res.appsScriptSecretConfigured,
+      variables: res.variables || []
+    };
+  },
+
+  async login(password: string, email?: string): Promise<{ success: boolean; user: any }> {
+    return safeFetch<{ success: boolean; user: any }>('/api/admin/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ password, email })
     });
-    if (res.token) {
-      setAdminToken(res.token);
-    }
-    return res;
   },
 
   async checkAuth(): Promise<{ success: boolean; user: any }> {
@@ -156,14 +150,10 @@ export const cmsApi = {
   },
 
   async logout(): Promise<void> {
-    try {
-      await safeFetch('/api/admin/logout', {
-        method: 'POST',
-        headers: getAuthHeaders()
-      });
-    } finally {
-      clearAdminToken();
-    }
+    await safeFetch('/api/admin/logout', {
+      method: 'POST',
+      headers: getAuthHeaders()
+    });
   },
 
   // Admin Operations

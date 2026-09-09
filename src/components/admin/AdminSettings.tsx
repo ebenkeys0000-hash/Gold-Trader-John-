@@ -15,13 +15,14 @@ import {
   ToggleRight,
   Sparkles
 } from 'lucide-react';
-import { GlobalSettings } from '../../types';
+import { GlobalSettings, SystemIntegrationStatus } from '../../types';
 import { cmsApi } from '../../services/apiClient';
 import { useCms } from '../../context/CmsContext';
 
 export const AdminSettings: React.FC = () => {
   const { refreshContent } = useCms();
   const [settings, setSettings] = useState<GlobalSettings | null>(null);
+  const [systemStatus, setSystemStatus] = useState<SystemIntegrationStatus | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -34,8 +35,12 @@ export const AdminSettings: React.FC = () => {
   const loadSettings = async () => {
     try {
       setIsLoading(true);
-      const data = await cmsApi.fetchSettings();
+      const [data, sys] = await Promise.all([
+        cmsApi.fetchSettings(),
+        cmsApi.fetchSystemStatus().catch(() => null)
+      ]);
       setSettings(data);
+      if (sys) setSystemStatus(sys);
     } catch (e: any) {
       setErrorMsg(e.message || 'Failed to load settings');
     } finally {
@@ -184,23 +189,32 @@ export const AdminSettings: React.FC = () => {
             <input
               type="url"
               value={settings.google_apps_script_url || ''}
-              onChange={(e) => setSettings({ ...settings, google_apps_script_url: e.target.value })}
+              onChange={(e) => setSettings({ ...settings, google_sheets_url: e.target.value })}
               placeholder="https://script.google.com/macros/s/.../exec"
               className="w-full text-xs rounded-xl p-3 bg-slate-950 border border-slate-700 text-white font-mono focus:outline-none focus:border-emerald-500"
             />
+            <p className="text-[11px] text-slate-400 mt-1">
+              Can also be configured via server environment variable <code className="text-emerald-400 font-mono">GOOGLE_APPS_SCRIPT_URL</code>.
+            </p>
           </div>
 
-          <div>
-            <label className="text-xs font-medium text-slate-300 block mb-1">
-              Google Apps Script Shared Secret (Optional)
-            </label>
-            <input
-              type="password"
-              value={settings.google_apps_script_secret || ''}
-              onChange={(e) => setSettings({ ...settings, google_apps_script_secret: e.target.value })}
-              placeholder="Secret token matching SECRET_KEY in Apps Script"
-              className="w-full text-xs rounded-xl p-2.5 bg-slate-950 border border-slate-700 text-white font-mono focus:outline-none focus:border-emerald-500"
-            />
+          <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center justify-between gap-3">
+            <div>
+              <div className="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>Script Authorization Secret (APPS_SCRIPT_SECRET)</span>
+              </div>
+              <p className="text-[11px] text-slate-400 mt-0.5">
+                Maintained strictly on the server in environment variables. Never exposed to browser code.
+              </p>
+            </div>
+            <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full border whitespace-nowrap ${
+              systemStatus?.isSecretConfigured 
+                ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/30' 
+                : 'bg-slate-800 text-slate-400 border-slate-700'
+            }`}>
+              {systemStatus?.isSecretConfigured ? 'Configured on Server' : 'Not Set (Optional)'}
+            </span>
           </div>
         </div>
 

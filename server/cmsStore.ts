@@ -731,7 +731,7 @@ class CmsStore {
     try {
       const payload = {
         action: 'submit_application',
-        secret: process.env.GOOGLE_APPS_SCRIPT_SECRET || '',
+        secret: process.env.APPS_SCRIPT_SECRET || process.env.GOOGLE_APPS_SCRIPT_SECRET || '',
         data: {
           application_id: app.id,
           created_at: app.createdAt,
@@ -774,7 +774,7 @@ class CmsStore {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           action,
-          secret: process.env.GOOGLE_APPS_SCRIPT_SECRET || '',
+          secret: process.env.APPS_SCRIPT_SECRET || process.env.GOOGLE_APPS_SCRIPT_SECRET || '',
           adminUser,
           data
         })
@@ -796,8 +796,9 @@ class CmsStore {
     try {
       const fetchUrl = new URL(targetUrl);
       fetchUrl.searchParams.set('action', 'status');
-      if (process.env.GOOGLE_APPS_SCRIPT_SECRET) {
-        fetchUrl.searchParams.set('secret', process.env.GOOGLE_APPS_SCRIPT_SECRET);
+      const secret = process.env.APPS_SCRIPT_SECRET || process.env.GOOGLE_APPS_SCRIPT_SECRET;
+      if (secret) {
+        fetchUrl.searchParams.set('secret', secret);
       }
 
       const res = await fetch(fetchUrl.toString(), { method: 'GET' });
@@ -827,8 +828,9 @@ class CmsStore {
     try {
       const fetchUrl = new URL(targetUrl);
       fetchUrl.searchParams.set('action', 'get_all');
-      if (process.env.GOOGLE_APPS_SCRIPT_SECRET) {
-        fetchUrl.searchParams.set('secret', process.env.GOOGLE_APPS_SCRIPT_SECRET);
+      const secret = process.env.APPS_SCRIPT_SECRET || process.env.GOOGLE_APPS_SCRIPT_SECRET;
+      if (secret) {
+        fetchUrl.searchParams.set('secret', secret);
       }
 
       const res = await fetch(fetchUrl.toString(), { method: 'GET' });

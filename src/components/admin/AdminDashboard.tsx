@@ -17,7 +17,8 @@ import {
   ShieldCheck, 
   Eye, 
   EyeOff,
-  AlertCircle
+  AlertCircle,
+  Server
 } from 'lucide-react';
 import { BrandLogo } from '../BrandLogo';
 import { useCms } from '../../context/CmsContext';
@@ -32,6 +33,7 @@ import { AdminFaq } from './AdminFaq';
 import { AdminSettings } from './AdminSettings';
 import { AdminAuditLog } from './AdminAuditLog';
 import { AdminGoogleSheetsGuide } from './AdminGoogleSheetsGuide';
+import { AdminConfigStatus } from './AdminConfigStatus';
 
 interface AdminDashboardProps {
   onClose?: () => void;
@@ -48,6 +50,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onClose }) => {
   const [activeTab, setActiveTab] = useState<string>('overview');
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [selectedAppForReview, setSelectedAppForReview] = useState<ApplicationData | null>(null);
+  const [showConfigModal, setShowConfigModal] = useState<boolean>(false);
 
   // Login form state
   const [password, setPassword] = useState<string>('');
@@ -93,6 +96,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onClose }) => {
     { id: 'contacts', label: 'Contacts & Social Media', icon: PhoneCall },
     { id: 'faq', label: 'FAQ', icon: HelpCircle },
     { id: 'settings', label: 'Settings', icon: Settings },
+    { id: 'config', label: 'Server Config & Security', icon: Server, highlight: true },
     { id: 'audit_log', label: 'Audit Log', icon: History },
     { id: 'google_sheets', label: 'System Status & Sheets', icon: FileSpreadsheet, highlight: true },
   ];
@@ -179,6 +183,26 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onClose }) => {
             </button>
           </form>
 
+          <div className="mt-4 flex items-center justify-center gap-3 text-xs">
+            <button
+              type="button"
+              onClick={() => setShowConfigModal(true)}
+              className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-1.5 transition py-1"
+            >
+              <Server className="w-3.5 h-3.5" />
+              <span>Audit Environment Variables</span>
+            </button>
+            <span className="text-slate-700">•</span>
+            <a
+              href="/config-status"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-slate-200 transition py-1"
+            >
+              Status Page
+            </a>
+          </div>
+
           <div className="mt-6 pt-6 border-t border-slate-800 text-center space-y-2">
             <div className="text-[11px] text-slate-500 flex items-center justify-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
@@ -196,6 +220,22 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onClose }) => {
             )}
           </div>
         </div>
+
+        {/* Modal for Config Status Inspection on Login Screen */}
+        {showConfigModal && (
+          <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
+              <button
+                type="button"
+                onClick={() => setShowConfigModal(false)}
+                className="absolute right-4 top-4 p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <AdminConfigStatus />
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -324,6 +364,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onClose }) => {
             {activeTab === 'contacts' && <AdminContacts />}
             {activeTab === 'faq' && <AdminFaq />}
             {activeTab === 'settings' && <AdminSettings />}
+            {activeTab === 'config' && <AdminConfigStatus />}
             {activeTab === 'audit_log' && <AdminAuditLog />}
             {activeTab === 'google_sheets' && <AdminGoogleSheetsGuide />}
           </div>

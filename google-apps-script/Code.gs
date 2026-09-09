@@ -22,7 +22,7 @@
 var SPREADSHEET_ID = ""; // Leave blank if container-bound, or paste Google Sheet ID
 
 // Optional security token to prevent unauthorized external access.
-var API_SECRET = ""; // Set your secret token here if desired (match GOOGLE_APPS_SCRIPT_SECRET)
+var API_SECRET = ""; // Set your secret token here if desired (match APPS_SCRIPT_SECRET in server environment)
 
 function getDb() {
   if (SPREADSHEET_ID && SPREADSHEET_ID.trim() !== "") {

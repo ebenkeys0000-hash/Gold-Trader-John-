@@ -16,6 +16,7 @@ import {
   getIntegrationStatus,
   testGoogleConnection
 } from './googleConfig';
+import { getSystemConfigAudit } from './configStatusPage';
 
 export const apiRouter = express.Router();
 
@@ -193,6 +194,14 @@ apiRouter.post('/applications', (req: Request, res: Response) => {
 // ADMIN AUTHENTICATION
 // ==============================================================================
 
+// Public configuration status check: audits presence of required env variables without exposing values
+apiRouter.get('/system/config-status', (req: Request, res: Response) => {
+  res.json({
+    success: true,
+    ...getSystemConfigAudit()
+  });
+});
+
 // Public status check: checks if ADMIN_SECRET_KEY is configured on the server
 apiRouter.get('/admin/auth-status', (req: Request, res: Response) => {
   res.json({
@@ -242,9 +251,9 @@ apiRouter.post('/admin/login', (req: Request, res: Response) => {
     path: '/'
   });
 
+  // Return user info only — session token is kept exclusively in the HttpOnly cookie
   return res.json({
     success: true,
-    token: session.token,
     user: {
       name: session.adminName,
       email: session.email,

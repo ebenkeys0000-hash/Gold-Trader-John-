@@ -174,4 +174,23 @@ export interface SystemIntegrationStatus {
   sheetsCount?: number;
 }
 
+export interface EnvVarAuditItem {
+  name: string;
+  category: 'Authentication' | 'Integration';
+  required: boolean;
+  isConfigured: boolean;
+  purpose: string;
+  location: string;
+  impactIfMissing: string;
+}
+
+export interface SystemConfigAudit {
+  timestamp: string;
+  nodeEnv: string;
+  adminAuthConfigured: boolean;
+  googleSheetsUrlConfigured: boolean;
+  appsScriptSecretConfigured: boolean;
+  variables: EnvVarAuditItem[];
+}
+
 

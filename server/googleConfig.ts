@@ -42,10 +42,11 @@ export function getGoogleAppsScriptUrl(): string {
 
 /**
  * Retrieves the effective Google Apps Script secret from environment.
+ * Prioritizes APPS_SCRIPT_SECRET as required, with GOOGLE_APPS_SCRIPT_SECRET as fallback.
  * NEVER exposed to client-side.
  */
 export function getGoogleAppsScriptSecret(): string {
-  return (process.env.GOOGLE_APPS_SCRIPT_SECRET || '').trim();
+  return (process.env.APPS_SCRIPT_SECRET || process.env.GOOGLE_APPS_SCRIPT_SECRET || '').trim();
 }
 
 /**

@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import { createServer as createViteServer } from 'vite';
 import { apiRouter } from './server/api';
+import { renderConfigStatusHtml } from './server/configStatusPage';
 
 dotenv.config();
 
@@ -23,6 +24,12 @@ async function startServer() {
   // API Health check
   app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  });
+
+  // Server-Side Configuration Status Page (No secrets exposed)
+  app.get('/config-status', (req, res) => {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.send(renderConfigStatusHtml());
   });
 
   // Mount API router
