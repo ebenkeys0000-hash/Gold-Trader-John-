@@ -19,7 +19,8 @@ import {
   EyeOff,
   AlertCircle,
   Server,
-  Megaphone
+  Megaphone,
+  Archive
 } from 'lucide-react';
 import { BrandLogo } from '../BrandLogo';
 import { useCms } from '../../context/CmsContext';
@@ -186,7 +187,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onClose }) => {
             </button>
           </form>
 
-          <div className="mt-4 flex items-center justify-center gap-3 text-xs">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs">
             <button
               type="button"
               onClick={() => setShowConfigModal(true)}
@@ -195,6 +196,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onClose }) => {
               <Server className="w-3.5 h-3.5" />
               <span>Audit Environment Variables</span>
             </button>
+            <span className="text-slate-700">•</span>
+            <a
+              href="/api/download-project-zip"
+              download="gold-trader-john-trading-world.zip"
+              className="text-amber-400 hover:text-amber-300 font-medium inline-flex items-center gap-1.5 transition py-1"
+              title="Download entire project repository as a ZIP archive"
+            >
+              <Archive className="w-3.5 h-3.5" />
+              <span>Download Project ZIP</span>
+            </a>
             <span className="text-slate-700">•</span>
             <a
               href="/config-status"
@@ -265,6 +276,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onClose }) => {
         </div>
 
         <div className="flex items-center gap-3">
+          <a
+            href="/api/download-project-zip"
+            download="gold-trader-john-trading-world.zip"
+            className="px-3 py-1.5 rounded-xl text-xs font-medium text-amber-300 hover:text-white bg-amber-950/60 hover:bg-amber-900/80 border border-amber-500/30 transition flex items-center gap-1.5"
+            title="Download entire project codebase and assets as a ZIP archive"
+          >
+            <Archive className="w-3.5 h-3.5 text-amber-400" />
+            <span className="hidden sm:inline">Download ZIP</span>
+          </a>
+
           {onClose && (
             <button
               onClick={onClose}

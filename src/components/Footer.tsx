@@ -1,5 +1,5 @@
 import React from 'react';
-import { Send, MessageSquare, Shield, Lock, ArrowUp, AlertCircle, ExternalLink } from 'lucide-react';
+import { Send, MessageSquare, Shield, Lock, ArrowUp, AlertCircle, ExternalLink, Archive } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { useCms } from '../context/CmsContext';
 
@@ -87,7 +87,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenAdmin }) => {
               {brandDesc}
             </p>
 
-            <div className="pt-2 flex items-center space-x-2">
+            <div className="pt-2 flex flex-wrap items-center gap-2">
               <button
                 id="btn-footer-admin-portal"
                 onClick={onOpenAdmin}
@@ -97,6 +97,17 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenAdmin }) => {
                 <Lock className="w-3 h-3 text-blue-400" />
                 <span>Admin Portal</span>
               </button>
+
+              <a
+                id="btn-footer-download-zip"
+                href="/api/download-project-zip"
+                download="gold-trader-john-trading-world.zip"
+                className="px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-amber-500/40 text-slate-400 hover:text-amber-300 transition-colors text-xs font-mono flex items-center space-x-1.5"
+                title="Download complete project source code as a ZIP archive"
+              >
+                <Archive className="w-3 h-3 text-amber-400" />
+                <span>Download ZIP</span>
+              </a>
             </div>
           </div>
 

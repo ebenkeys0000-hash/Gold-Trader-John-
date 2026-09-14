@@ -16,7 +16,8 @@ import {
   Sparkles,
   FileCode,
   Database,
-  Download
+  Download,
+  Archive
 } from 'lucide-react';
 import { GlobalSettings, SystemIntegrationStatus } from '../../types';
 import { cmsApi } from '../../services/apiClient';
@@ -427,6 +428,15 @@ export const AdminSettings: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
+            <a
+              href="/api/download-project-zip"
+              download="gold-trader-john-trading-world.zip"
+              className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-amber-950/70 hover:bg-amber-900/70 text-amber-300 border border-amber-500/30 transition flex items-center gap-2 shadow-sm"
+              title="Download entire project codebase and assets as a ZIP archive"
+            >
+              <Archive className="w-3.5 h-3.5 text-amber-400" />
+              Download Project ZIP
+            </a>
             <a
               href="/api/admin/applications/export-json"
               download

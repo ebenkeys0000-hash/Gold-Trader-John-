@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import fs from 'fs';
 import path from 'path';
+import { execFile } from 'child_process';
 import { cmsStore } from './cmsStore';
 import { 
   isAuthConfigured,
@@ -523,6 +524,44 @@ apiRouter.get('/admin/cms-store/export', requireAdmin, (req: AuthenticatedReques
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Content-Disposition', `attachment; filename=gold_trader_john_cms_store_${new Date().toISOString().slice(0, 10)}.json`);
   res.send(JSON.stringify(fullData, null, 2));
+});
+
+// Export entire codebase & assets as a standalone ZIP archive (Direct Download)
+apiRouter.get('/download-project-zip', (req: Request, res: Response) => {
+  const scriptPath = path.join(process.cwd(), 'scripts', 'build_zip.py');
+  const zipPath = path.join('/tmp', 'gold-trader-john-trading-world.zip');
+
+  execFile('python3', [scriptPath, zipPath], (error) => {
+    if (error) {
+      console.error('Failed to create project ZIP archive:', error);
+      return res.status(500).json({ success: false, error: 'Failed to build project ZIP archive' });
+    }
+
+    res.download(zipPath, 'gold-trader-john-trading-world.zip', (err) => {
+      if (err) {
+        console.error('Error downloading project ZIP:', err);
+      }
+    });
+  });
+});
+
+// Admin endpoint for downloading project ZIP
+apiRouter.get('/admin/project/export-zip', requireAdmin, (req: AuthenticatedRequest, res: Response) => {
+  const scriptPath = path.join(process.cwd(), 'scripts', 'build_zip.py');
+  const zipPath = path.join('/tmp', 'gold-trader-john-trading-world.zip');
+
+  execFile('python3', [scriptPath, zipPath], (error) => {
+    if (error) {
+      console.error('Failed to create project ZIP archive:', error);
+      return res.status(500).json({ success: false, error: 'Failed to build project ZIP archive' });
+    }
+
+    res.download(zipPath, 'gold-trader-john-trading-world.zip', (err) => {
+      if (err) {
+        console.error('Error downloading project ZIP:', err);
+      }
+    });
+  });
 });
 
 // Update content field
