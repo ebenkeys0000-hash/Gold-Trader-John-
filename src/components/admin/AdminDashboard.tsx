@@ -18,7 +18,8 @@ import {
   Eye, 
   EyeOff,
   AlertCircle,
-  Server
+  Server,
+  Megaphone
 } from 'lucide-react';
 import { BrandLogo } from '../BrandLogo';
 import { useCms } from '../../context/CmsContext';
@@ -34,6 +35,7 @@ import { AdminSettings } from './AdminSettings';
 import { AdminAuditLog } from './AdminAuditLog';
 import { AdminGoogleSheetsGuide } from './AdminGoogleSheetsGuide';
 import { AdminConfigStatus } from './AdminConfigStatus';
+import { AdminAds } from './AdminAds';
 
 interface AdminDashboardProps {
   onClose?: () => void;
@@ -94,6 +96,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onClose }) => {
     { id: 'programs', label: 'Programs', icon: GraduationCap },
     { id: 'applications', label: 'Applications', icon: Users },
     { id: 'contacts', label: 'Contacts & Social Media', icon: PhoneCall },
+    { id: 'ads', label: 'Ads & Promotions', icon: Megaphone, highlight: true },
     { id: 'faq', label: 'FAQ', icon: HelpCircle },
     { id: 'settings', label: 'Settings', icon: Settings },
     { id: 'config', label: 'Server Config & Security', icon: Server, highlight: true },
@@ -362,6 +365,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onClose }) => {
               <AdminApplications initialSelectedApp={selectedAppForReview} />
             )}
             {activeTab === 'contacts' && <AdminContacts />}
+            {activeTab === 'ads' && <AdminAds />}
             {activeTab === 'faq' && <AdminFaq />}
             {activeTab === 'settings' && <AdminSettings />}
             {activeTab === 'config' && <AdminConfigStatus />}

@@ -3,6 +3,7 @@ import {
   Search, 
   Filter, 
   Download, 
+  FileCode,
   Trash2, 
   ExternalLink, 
   MessageSquare, 
@@ -183,6 +184,18 @@ export const AdminApplications: React.FC<AdminApplicationsProps> = ({ initialSel
     document.body.removeChild(link);
   };
 
+  const handleExportJSON = () => {
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(filteredApps, null, 2));
+    const link = document.createElement('a');
+    link.setAttribute('href', dataStr);
+    link.setAttribute('download', `GoldTraderJohn_Registrations_${new Date().toISOString().slice(0, 10)}.json`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setToastMsg(`Exported ${filteredApps.length} registrations to JSON.`);
+    setTimeout(() => setToastMsg(null), 3000);
+  };
+
   const getStatusBadgeClass = (status: ApplicationStatus) => {
     switch (status) {
       case 'New': return 'bg-amber-500/20 text-amber-300 border border-amber-500/30';
@@ -225,13 +238,24 @@ export const AdminApplications: React.FC<AdminApplicationsProps> = ({ initialSel
             Review onboarding submissions, update progress statuses, record confidential admin notes, and contact applicants.
           </p>
         </div>
-        <button
-          onClick={handleExportCSV}
-          className="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-2 shadow-sm shrink-0 self-start sm:self-auto"
-        >
-          <Download className="w-4 h-4 text-blue-400" />
-          Export Filtered CSV
-        </button>
+        <div className="flex items-center gap-2 self-start sm:self-auto">
+          <button
+            onClick={handleExportJSON}
+            className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-emerald-950/60 hover:bg-emerald-900/60 text-emerald-300 border border-emerald-500/30 transition flex items-center gap-2 shadow-sm shrink-0"
+            title="Download registrations in JSON format"
+          >
+            <FileCode className="w-4 h-4 text-emerald-400" />
+            Export JSON
+          </button>
+          <button
+            onClick={handleExportCSV}
+            className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-2 shadow-sm shrink-0"
+            title="Download registrations in CSV format"
+          >
+            <Download className="w-4 h-4 text-blue-400" />
+            Export CSV
+          </button>
+        </div>
       </div>
 
       {/* Search & Filter Bar */}

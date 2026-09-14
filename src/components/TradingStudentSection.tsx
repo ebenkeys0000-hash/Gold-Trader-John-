@@ -27,7 +27,7 @@ export const TradingStudentSection: React.FC<TradingStudentSectionProps> = ({ on
   const requirements = getContent('student.requirements', program?.requirements || 'Register with the recommended broker, meet the minimum account requirement of $50, contact Gold Trader John regarding broker promotions, follow disciplined signals, and respect weekly profit-sharing terms.');
   const brokerInfo = getContent('student.broker_info', 'Fast execution, competitive spreads on spot Gold (XAU/USD), and seamless liquidity.');
   const bonusInfo = getContent('student.bonus_info', program?.bonus_text || '120% First Deposit Bonus. Promotional bonus availability, eligibility, terms and conditions are determined by the broker.');
-  const disclaimer = getContent('student.disclaimer', program?.disclaimer || 'As long as you are trading with Gold Trader John and following the applicable VIP and General Signals, you will continue to share the profits you make with Gold Trader John on a weekly basis according to the agreed profit-sharing terms. Trading results are not guaranteed. Profits can vary and losses are possible.');
+  const disclaimer = getContent('student.disclaimer', program?.disclaimer || 'As long as you are trading with Gold Trader John and following the applicable VIP and General Signals, you will continue to share the profits you make with Gold Trader John on a weekly basis according to the agreed profit-sharing terms. Profit is guaranteed but return is not guaranteed.');
   const ctaText = getContent('student.cta_text', program?.cta_text || 'Apply to Become a Trading Student');
 
   const brokerLink = getContact('broker_link')?.value || 'https://track.account.xellion.com/?t=8fw9LoxmvtMQ';
@@ -220,19 +220,6 @@ export const TradingStudentSection: React.FC<TradingStudentSectionProps> = ({ on
                   </button>
                 )}
               </div>
-            </div>
-
-            {/* TRADING STUDENT PROFIT-SHARING DISCLAIMER CARD */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-amber-950/30 border border-amber-500/40 shadow-xl space-y-3">
-              <div className="flex items-center space-x-2 text-amber-400">
-                <AlertCircle className="w-5 h-5 shrink-0" />
-                <h4 className="text-base font-bold tracking-tight text-white">
-                  ❗ Trading Student Disclaimer
-                </h4>
-              </div>
-              <p className="text-sm text-slate-300 leading-relaxed">
-                “{disclaimer.replace(/^“|”$/g, '')}”
-              </p>
             </div>
           </div>
         </div>

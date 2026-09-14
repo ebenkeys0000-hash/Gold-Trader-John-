@@ -16,7 +16,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartJourney, onLearnMore }) => {
   const heroSubtitle = getContent('home.hero_subtitle', 'Helping and teaching everyone to make more from less.');
   const heroDescription = getContent(
     'home.hero_description',
-    'Build your trading knowledge, understand market dynamics, develop structured trading setups and learn to approach the financial markets with discipline, risk management and capital preservation.'
+    'Build your trading knowledge, understand market dynamics, develop structured trading setups and learn to approach the financial markets with discipline, risk management and capital preservation focus.'
   );
   const ctaStart = getContent('home.hero_cta_start', 'Start Your Journey');
   const ctaLearn = getContent('home.hero_cta_learn', 'Explore Programs');
@@ -53,7 +53,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartJourney, onLearnMore }) => {
 
             {/* Description */}
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
-              “{heroDescription.replace(/^“|”$/g, '')}”
+              “{heroDescription.replace(/^“|”|"/g, '').replace(/“|”|"$/g, '').trim()}”
             </p>
 
             {/* Four Required Display Badges */}

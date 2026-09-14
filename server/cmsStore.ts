@@ -8,7 +8,8 @@ import {
   GlobalSettings, 
   AuditLogEntry, 
   ApplicationData,
-  AdminStats 
+  AdminStats,
+  AdvertisementItem
 } from '../src/types';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
@@ -21,7 +22,7 @@ const DEFAULT_SITE_CONTENT: SiteContentItem[] = [
     section: 'home',
     field_key: 'hero_title',
     field_label: 'Hero Title',
-    content: 'Helping and teaching everyone to make more from less.',
+    content: 'Learn. Trade. Develop. Grow.',
     content_type: 'text',
     status: 'active',
     updated_at: new Date().toISOString(),
@@ -32,7 +33,7 @@ const DEFAULT_SITE_CONTENT: SiteContentItem[] = [
     section: 'home',
     field_key: 'hero_subtitle',
     field_label: 'Hero Subtitle',
-    content: 'Structured Commodities & Gold Mentorship, Institutional Signals, and Capital Management Partnerships.',
+    content: 'Helping and teaching everyone to make more from less.',
     content_type: 'text',
     status: 'active',
     updated_at: new Date().toISOString(),
@@ -43,7 +44,7 @@ const DEFAULT_SITE_CONTENT: SiteContentItem[] = [
     section: 'home',
     field_key: 'hero_description',
     field_label: 'Hero Description',
-    content: 'Master disciplined technical analysis, high-probability execution, and capital preservation with Gold Trader John.',
+    content: 'Build your trading knowledge, understand market dynamics, develop structured trading setups and learn to approach the financial markets with discipline, risk management and capital preservation focus.',
     content_type: 'textarea',
     status: 'active',
     updated_at: new Date().toISOString(),
@@ -76,7 +77,7 @@ const DEFAULT_SITE_CONTENT: SiteContentItem[] = [
     section: 'about',
     field_key: 'about_description',
     field_label: 'About Description',
-    content: 'Gold Trader John is a seasoned commodities and currency analyst dedicated to helping traders achieve consistent execution through structured rules, risk management, and strategic market patience.',
+    content: "Gold Trader John offers free of any these three you choose \nWhat you get depends on registering on my recommended broker and the amount you're willing to fund in it.\nEach of the three standard ways traders grow that I offer has minimum you must deposit\nView them below :",
     content_type: 'textarea',
     status: 'active',
     updated_at: new Date().toISOString(),
@@ -160,7 +161,7 @@ const DEFAULT_PROGRAMS: ProgramItem[] = [
     requirements: 'Minimum $50 broker account balance. Registration completed via authorized broker onboarding portal.',
     bonus_text: 'Eligible users may receive a promotional 120% first-deposit bonus from the broker, subject to broker terms and trading volume conditions.',
     profit_sharing_text: 'Weekly profit-sharing terms apply while following signals or developing under mentorship.',
-    disclaimer: 'Trading financial markets involves substantial risk of loss and is not suitable for every investor. Profits are never guaranteed.',
+    disclaimer: 'Trading financial markets involves market dynamics. Profit is guaranteed but return is not guaranteed.',
     cta_text: 'Apply as Student',
     status: 'active',
     updated_at: new Date().toISOString(),
@@ -175,7 +176,7 @@ const DEFAULT_PROGRAMS: ProgramItem[] = [
     requirements: 'Minimum $200 capital balance. Dedication to structured technical, fundamental, and risk management modules.',
     bonus_text: 'The promotional 120% bonus is subject to broker eligibility, terms, and trading turnover requirements.',
     profit_sharing_text: 'Weekly profit-sharing terms while following signals or developing under direct mentorship.',
-    disclaimer: 'Mentorship provides educational guidance and market analysis. Past performance is no guarantee of future returns.',
+    disclaimer: 'Mentorship provides educational guidance and structured trading frameworks. Profit is guaranteed but return is not guaranteed.',
     cta_text: 'Apply for Mentorship',
     status: 'active',
     updated_at: new Date().toISOString(),
@@ -190,7 +191,7 @@ const DEFAULT_PROGRAMS: ProgramItem[] = [
     requirements: 'Minimum $300 broker deposit on authorized platform. Strictly no self-trading or interference on managed account.',
     bonus_text: 'Promotional first-deposit bonus available subject to broker terms and client eligibility criteria.',
     profit_sharing_text: '50/50 profit sharing arrangement on realized net withdrawals. Zero upfront management fees.',
-    disclaimer: 'Trading capital is at risk. Never allocate funds you cannot afford to lose. Non-interference agreement is strictly enforced.',
+    disclaimer: "The rate of daily return is not guaranteed \nTrading also involves financial risk and you need to discuss how much percentage you're willing to stop(if in loss) in securing your account  \nProfit sharing amount is not negotiable \nProceeding means you agree and understand the risk the financial market holds \nThe higher the deposit into your account is the higher the bonus you will receive and the higher your profit is guaranteed.",
     cta_text: 'Apply for Partnership',
     status: 'active',
     updated_at: new Date().toISOString(),
@@ -315,7 +316,7 @@ const DEFAULT_FAQ: FaqItem[] = [
   {
     id: 'faq-5',
     question: 'Are trading profits guaranteed?',
-    answer: 'No. Financial trading involves inherent market risk and potential loss of capital. While Gold Trader John applies disciplined risk-reward parameters (aiming for 1:2 or better), profits are never guaranteed.',
+    answer: 'Profit is guaranteed but return is not guaranteed. While Gold Trader John applies disciplined risk-reward parameters (aiming for 1:2 or better), market returns fluctuate.',
     category: 'Risk & Rules',
     display_order: 5,
     status: 'active',
@@ -397,6 +398,77 @@ const DEFAULT_AUDIT_LOGS: AuditLogEntry[] = [
   }
 ];
 
+const DEFAULT_ADVERTISEMENTS: AdvertisementItem[] = [
+  {
+    id: 'ad-1',
+    title: '120% First Deposit Match Bonus',
+    tagline: 'Supercharge your trading account with our vetted broker partner. Available for new Gold Trader John students and mentees.',
+    badge: 'EXCLUSIVE BROKER PROMO',
+    cta_text: 'Claim 120% Bonus',
+    cta_url: 'https://track.account.xellion.com/?t=8fw9LoxmvtMQ',
+    is_external: true,
+    placement: 'all',
+    theme: 'amber',
+    status: 'active',
+    impressions: 542,
+    clicks: 47,
+    display_order: 1,
+    sponsor_label: 'Featured Broker Partner',
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'ad-2',
+    title: 'VIP Gold Signals & Price-Action Setups',
+    tagline: 'Get instant notifications for high-probability XAU/USD key breakouts, liquidity sweeps, and structured SL/TP parameters.',
+    badge: 'DAILY LIVE SIGNALS',
+    cta_text: 'Join VIP Channel',
+    cta_url: 'https://t.me/goldtraderjohn01',
+    is_external: true,
+    placement: 'all',
+    theme: 'blue',
+    status: 'active',
+    impressions: 618,
+    clicks: 63,
+    display_order: 2,
+    sponsor_label: 'Official Telegram Channel',
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'ad-3',
+    title: '50/50 Profit Sharing Investment Accounts',
+    tagline: 'Institutional risk-control parameters, capital preservation rules, and direct account execution by Gold Trader John.',
+    badge: 'MANAGED ACCOUNTS',
+    cta_text: 'Apply for Allocation',
+    cta_url: '#partnership',
+    is_external: false,
+    placement: 'all',
+    theme: 'emerald',
+    status: 'active',
+    impressions: 430,
+    clicks: 39,
+    display_order: 3,
+    sponsor_label: 'Investment Partnership',
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'ad-4',
+    title: 'Comprehensive 1-on-1 Trader Mentorship',
+    tagline: 'Master pure price-action, market structure, psychology, and risk mitigation across 5 intensive development stages.',
+    badge: 'LIMITED ENROLLMENT',
+    cta_text: 'View Mentorship Details',
+    cta_url: '#mentee',
+    is_external: false,
+    placement: 'in_feed',
+    theme: 'purple',
+    status: 'active',
+    impressions: 312,
+    clicks: 28,
+    display_order: 4,
+    sponsor_label: 'Trader Development Academy',
+    updated_at: new Date().toISOString()
+  }
+];
+
 interface CmsDataStore {
   siteContent: SiteContentItem[];
   programs: ProgramItem[];
@@ -405,6 +477,7 @@ interface CmsDataStore {
   settings: GlobalSettings;
   applications: ApplicationData[];
   auditLogs: AuditLogEntry[];
+  advertisements: AdvertisementItem[];
 }
 
 class CmsStore {
@@ -418,7 +491,8 @@ class CmsStore {
       faq: DEFAULT_FAQ,
       settings: DEFAULT_SETTINGS,
       applications: DEFAULT_APPLICATIONS,
-      auditLogs: DEFAULT_AUDIT_LOGS
+      auditLogs: DEFAULT_AUDIT_LOGS,
+      advertisements: DEFAULT_ADVERTISEMENTS
     };
     this.loadFromDisk();
   }
@@ -459,6 +533,12 @@ class CmsStore {
         if (parsed.settings) this.data.settings = { ...this.data.settings, ...parsed.settings };
         if (parsed.applications) this.data.applications = parsed.applications;
         if (parsed.auditLogs) this.data.auditLogs = parsed.auditLogs;
+        if (parsed.advertisements && Array.isArray(parsed.advertisements) && parsed.advertisements.length > 0) {
+          this.data.advertisements = parsed.advertisements;
+        } else {
+          this.data.advertisements = DEFAULT_ADVERTISEMENTS;
+          this.saveToDisk();
+        }
       } else {
         this.saveToDisk();
       }
@@ -723,6 +803,11 @@ class CmsStore {
     };
   }
 
+  // --- Full Data Store Access for Export/Backup ---
+  public getFullDataStore(): CmsDataStore {
+    return this.data;
+  }
+
   // --- Google Sheets Sync Helpers ---
   private async syncApplicationToGoogle(app: ApplicationData) {
     const gasUrl = this.data.settings.google_sheets_url || process.env.GOOGLE_APPS_SCRIPT_URL;
@@ -894,6 +979,102 @@ class CmsStore {
     } catch (err: any) {
       return { success: false, message: `Pull failed: ${err.message || String(err)}` };
     }
+  }
+
+  // ==============================================================================
+  // ADVERTISEMENTS ENGINE
+  // ==============================================================================
+
+  public getAdvertisements(placement?: string): AdvertisementItem[] {
+    let ads = (this.data.advertisements || []).filter(a => a.status === 'active');
+    if (placement && placement !== 'all') {
+      ads = ads.filter(a => a.placement === placement || a.placement === 'all');
+    }
+    return ads.sort((a, b) => (a.display_order || 0) - (b.display_order || 0));
+  }
+
+  public getAllAdvertisementsAdmin(): AdvertisementItem[] {
+    return [...(this.data.advertisements || [])].sort((a, b) => (a.display_order || 0) - (b.display_order || 0));
+  }
+
+  public createAdvertisement(
+    adData: Omit<AdvertisementItem, 'id' | 'impressions' | 'clicks' | 'updated_at'> & { id?: string },
+    adminUser: string = 'Admin'
+  ): AdvertisementItem {
+    const now = new Date().toISOString();
+    const newAd: AdvertisementItem = {
+      id: adData.id || `ad-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+      title: adData.title || 'Special Trading Announcement',
+      tagline: adData.tagline || '',
+      badge: adData.badge || 'PROMOTIONAL',
+      cta_text: adData.cta_text || 'Learn More',
+      cta_url: adData.cta_url || '#',
+      is_external: Boolean(adData.is_external),
+      image_url: adData.image_url || '',
+      placement: adData.placement || 'all',
+      theme: adData.theme || 'amber',
+      status: adData.status || 'active',
+      impressions: 0,
+      clicks: 0,
+      display_order: adData.display_order || (this.data.advertisements.length + 1),
+      sponsor_label: adData.sponsor_label || 'Gold Trader John Partner',
+      updated_at: now
+    };
+
+    if (!this.data.advertisements) {
+      this.data.advertisements = [];
+    }
+    this.data.advertisements.push(newAd);
+    this.logAudit(adminUser, 'CREATE', 'ADS', newAd.id, '', newAd.title);
+    this.saveToDisk();
+    return newAd;
+  }
+
+  public updateAdvertisement(
+    id: string,
+    updates: Partial<AdvertisementItem>,
+    adminUser: string = 'Admin'
+  ): { success: boolean; ad?: AdvertisementItem; error?: string } {
+    const ad = (this.data.advertisements || []).find(a => a.id === id);
+    if (!ad) {
+      return { success: false, error: 'Advertisement not found' };
+    }
+
+    const oldTitle = ad.title;
+    Object.assign(ad, updates, { updated_at: new Date().toISOString() });
+
+    this.logAudit(adminUser, 'UPDATE', 'ADS', id, oldTitle, `${ad.title} (${ad.status})`);
+    this.saveToDisk();
+    return { success: true, ad };
+  }
+
+  public deleteAdvertisement(id: string, adminUser: string = 'Admin'): { success: boolean; error?: string } {
+    const idx = (this.data.advertisements || []).findIndex(a => a.id === id);
+    if (idx === -1) {
+      return { success: false, error: 'Advertisement not found' };
+    }
+
+    const removed = this.data.advertisements.splice(idx, 1)[0];
+    this.logAudit(adminUser, 'DELETE', 'ADS', id, removed.title, 'DELETED');
+    this.saveToDisk();
+    return { success: true };
+  }
+
+  public recordAdImpression(id: string): boolean {
+    const ad = (this.data.advertisements || []).find(a => a.id === id);
+    if (!ad) return false;
+    ad.impressions = (ad.impressions || 0) + 1;
+    // Don't log audit for impressions to avoid flooding logs
+    this.saveToDisk();
+    return true;
+  }
+
+  public recordAdClick(id: string): boolean {
+    const ad = (this.data.advertisements || []).find(a => a.id === id);
+    if (!ad) return false;
+    ad.clicks = (ad.clicks || 0) + 1;
+    this.saveToDisk();
+    return true;
   }
 }
 

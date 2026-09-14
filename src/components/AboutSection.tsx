@@ -7,10 +7,11 @@ export const AboutSection: React.FC = () => {
   const { getContent } = useCms();
 
   const title = getContent('about.title', 'Meet Gold Trader John');
-  const description = getContent(
-    'about.description',
-    'Gold Trader John Trading World is dedicated to helping individuals develop practical knowledge and discipline in financial-market trading.'
-  );
+  const defaultDescription = `Gold Trader John offers free of any these three you choose 
+What you get depends on registering on my recommended broker and the amount you're willing to fund in it.
+Each of the three standard ways traders grow that I offer has minimum you must deposit
+View them below :`;
+  const description = getContent('about.description', getContent('about.about_description', defaultDescription));
   const experienceDesc = getContent(
     'about.experience_desc',
     'With more than 2 years of experience in the financial market, Gold Trader John focuses on strategy-driven trading, risk management and capital preservation.'
@@ -32,8 +33,11 @@ export const AboutSection: React.FC = () => {
             {title}
           </h2>
           <div className="space-y-3 text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto text-left sm:text-center">
-            <p>
-              “{description.replace(/^“|”$/g, '')}”
+            <p className="whitespace-pre-line font-medium text-slate-200">
+              “{description.replace(/^“|”$/g, '').trim()}”
+            </p>
+            <p className="text-slate-300">
+              Gold Trader John Trading World is dedicated to helping individuals develop practical knowledge and discipline in the financial-market trading.
             </p>
             <p className="text-slate-300">
               {experienceDesc}

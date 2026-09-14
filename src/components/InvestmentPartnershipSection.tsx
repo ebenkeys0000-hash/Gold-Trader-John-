@@ -30,10 +30,15 @@ export const InvestmentPartnershipSection: React.FC<InvestmentPartnershipSection
   const minDeposit = getContent('partner.min_deposit', program?.minimum_amount || '$300');
   const profitSharing = getContent('partner.profit_sharing', program?.profit_sharing_text || '50 / 50 Profit Sharing');
   const riskDisclosure = getContent('partner.risk_disclosure', 'Strict capital preservation protocol with defined maximum drawdown limits.');
+  const defaultPartnerDisclaimer = `The rate of daily return is not guaranteed 
+Trading also involves financial risk and you need to discuss how much percentage you're willing to stop(if in loss) in securing your account  
+Profit sharing amount is not negotiable 
+Proceeding means you agree and understand the risk the financial market holds 
+The higher the deposit into your account is the higher the bonus you will receive and the higher your profit is guaranteed.`;
+
   const disclaimer = getContent(
     'partner.disclaimer',
-    program?.disclaimer ||
-      'Trading financial markets involves significant risk and the possibility of losing some or all of the capital committed. No profit or return is guaranteed. The amount invested does not guarantee a particular level of profit. Larger capital may provide greater opportunity, but it can also result in greater potential losses. Only commit capital that you can afford to lose. Before submitting an account for management, ensure that you understand the risks, the profit-sharing arrangement, the applicable broker terms and the management conditions.'
+    program?.disclaimer || defaultPartnerDisclaimer
   );
   const bonusInfo = getContent('partner.bonus_info', program?.bonus_text || '120% First Deposit Bonus subject to broker eligibility, terms and conditions.');
   const ctaText = getContent('partner.cta_text', program?.cta_text || 'Apply as Investment Partner');
@@ -222,7 +227,7 @@ export const InvestmentPartnershipSection: React.FC<InvestmentPartnershipSection
                   Risk Disclosure
                 </h4>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  “Investment partnership involves financial risk. Capital can fluctuate and profits are not guaranteed.”
+                  “Investment partnership involves financial risk. Capital can fluctuate and profit is guaranteed but return is not guaranteed.”
                 </p>
               </div>
               <span className="text-[11px] font-mono text-red-400/80 block pt-2 border-t border-slate-900">
@@ -252,21 +257,21 @@ export const InvestmentPartnershipSection: React.FC<InvestmentPartnershipSection
                 </p>
               </div>
               <p className="text-[11px] text-slate-400 leading-relaxed italic border-t border-slate-900 pt-2">
-                *Profits are never guaranteed and market conditions fluctuate.
+                *Profit is guaranteed but return is not guaranteed and market conditions fluctuate.
               </p>
             </div>
           </div>
         </div>
 
         {/* SECTION: IMPORTANT INVESTMENT DISCLAIMER */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-slate-950 to-slate-900 border-2 border-red-500/40 shadow-2xl space-y-6 max-w-4xl mx-auto">
+        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-slate-950 to-slate-900 border-2 border-red-500/40 shadow-2xl space-y-6 max-w-4xl mx-auto mt-8">
           <div className="flex items-center space-x-3 text-red-400">
             <div className="p-2.5 rounded-xl bg-red-950/60 border border-red-800/60">
               <ShieldAlert className="w-7 h-7" />
             </div>
             <div>
               <span className="text-xs font-mono uppercase tracking-widest text-red-400 block font-bold">
-                Regulatory & Risk Notice
+                Regulatory Notice
               </span>
               <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white">
                 ❗ INVESTMENT PARTNERSHIP DISCLAIMER
@@ -275,15 +280,12 @@ export const InvestmentPartnershipSection: React.FC<InvestmentPartnershipSection
           </div>
 
           <div className="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
-            <p className="text-white font-semibold">
-              “{disclaimer.replace(/^“|”$/g, '')}”
+            <p className="text-white font-semibold whitespace-pre-line">
+              “{disclaimer.replace(/^“|”|"/g, '').replace(/“|”|"$/g, '').trim()}”
             </p>
           </div>
 
-          <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-xs text-slate-400">
-              Strict compliance: No guaranteed returns or zero-loss promises.
-            </div>
+          <div className="pt-4 border-t border-slate-800 flex justify-center sm:justify-end">
             {isInactive ? (
               <div className="w-full sm:w-auto py-3.5 px-7 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 font-bold text-sm text-center">
                 Currently unavailable

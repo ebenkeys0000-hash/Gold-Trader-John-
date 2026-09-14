@@ -15,6 +15,8 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { LegalModals } from './components/LegalModals';
 import { AdminPortal } from './components/AdminPortal';
+import { InFeedAdBanner } from './components/ads/InFeedAdBanner';
+import { FloatingAdWidget } from './components/ads/FloatingAdWidget';
 import { ProgramType } from './types';
 
 export default function App() {
@@ -69,6 +71,9 @@ export default function App() {
           onLearnMore={scrollToAbout}
         />
 
+        {/* In-Feed Partner Feature & Ad Banner (Hero Slot) */}
+        <InFeedAdBanner slotId="hero-promo" preferredTheme="amber" onSelectProgram={(program) => scrollToApply(program as any)} />
+
         {/* 4. About Gold Trader John */}
         <AboutSection />
 
@@ -83,6 +88,9 @@ export default function App() {
 
         {/* 10, 11. Investment Partnership Section & Requirements */}
         <InvestmentPartnershipSection onApply={() => scrollToApply('partner')} />
+
+        {/* In-Feed High-Converting Ad Banner (VIP Signals & Broker Bonus Slot) */}
+        <InFeedAdBanner slotId="partnership-promo" preferredTheme="blue" onSelectProgram={(program) => scrollToApply(program as any)} />
 
         {/* 12. General & VIP Signals Section */}
         <SignalsSection onApply={() => scrollToApply('student')} />
@@ -122,6 +130,9 @@ export default function App() {
         isOpen={isAdminOpen}
         onClose={() => setIsAdminOpen(false)}
       />
+
+      {/* Floating Corner Promotional Widget */}
+      <FloatingAdWidget onSelectProgram={(program) => scrollToApply(program as any)} />
     </div>
   );
 }

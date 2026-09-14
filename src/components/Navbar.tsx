@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Shield, ArrowRight } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
+import { TopAdTicker } from './ads/TopAdTicker';
 
 interface NavbarProps {
   onOpenAdmin: () => void;
   onOpenLegal: (modal: 'risk' | 'terms' | 'privacy') => void;
+  onSelectProgram?: (program: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin, onOpenLegal }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin, onOpenLegal, onSelectProgram }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -33,11 +35,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin, onOpenLegal }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/40 py-3'
-          : 'bg-transparent py-4 sm:py-5'
+          ? 'bg-slate-950/95 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/40'
+          : 'bg-slate-950/80 backdrop-blur-sm border-b border-slate-800/40'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      {/* Top Promotional & Announcement Ticker Ad */}
+      <TopAdTicker onSelectProgram={onSelectProgram} />
+
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all duration-200 ${
+        isScrolled ? 'py-2.5 sm:py-3' : 'py-3 sm:py-4'
+      }`}>
         {/* Brand Logo & Name */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

@@ -5,7 +5,8 @@ import {
   ContactItem, 
   FaqItem, 
   GlobalSettings, 
-  ApplicationData 
+  ApplicationData,
+  AdvertisementItem
 } from '../types';
 import { cmsApi } from '../services/apiClient';
 
@@ -18,8 +19,12 @@ interface CmsContextType {
   getContact: (type: string) => ContactItem | undefined;
   faqList: FaqItem[];
   settings: GlobalSettings | null;
+  advertisements: AdvertisementItem[];
   isLoading: boolean;
   refreshContent: () => Promise<void>;
+  refreshAds: () => Promise<void>;
+  recordAdClick: (id: string) => Promise<void>;
+  recordAdImpression: (id: string) => Promise<void>;
   isAdminAuthenticated: boolean;
   adminUser: any | null;
   adminLogin: (password: string, email?: string) => Promise<{ success: boolean; error?: string }>;
@@ -51,20 +56,31 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [contacts, setContacts] = useState<ContactItem[]>([]);
   const [faqList, setFaqList] = useState<FaqItem[]>([]);
   const [settings, setSettings] = useState<GlobalSettings>(DEFAULT_FALLBACK_SETTINGS);
+  const [advertisements, setAdvertisements] = useState<AdvertisementItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // Admin state
   const [adminUser, setAdminUser] = useState<any | null>(null);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(false);
 
+  const loadAds = useCallback(async () => {
+    try {
+      const ads = await cmsApi.fetchAds();
+      setAdvertisements(ads || []);
+    } catch (err) {
+      console.warn('Could not fetch ads from server:', err);
+    }
+  }, []);
+
   const loadAllCmsData = useCallback(async () => {
     try {
-      const [contentRes, progRes, contRes, faqRes, settRes] = await Promise.allSettled([
+      const [contentRes, progRes, contRes, faqRes, settRes, adsRes] = await Promise.allSettled([
         cmsApi.fetchContent(),
         cmsApi.fetchPrograms(),
         cmsApi.fetchContacts(),
         cmsApi.fetchFaq(),
-        cmsApi.fetchSettings()
+        cmsApi.fetchSettings(),
+        cmsApi.fetchAds()
       ]);
 
       if (contentRes.status === 'fulfilled' && contentRes.value) {
@@ -81,6 +97,9 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
       if (settRes.status === 'fulfilled' && settRes.value) {
         setSettings(settRes.value);
+      }
+      if (adsRes.status === 'fulfilled' && adsRes.value) {
+        setAdvertisements(adsRes.value);
       }
     } catch (err) {
       console.warn('Could not fetch latest CMS data from server, relying on cache/fallbacks:', err);
@@ -159,6 +178,16 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
+  const recordAdClick = useCallback(async (id: string) => {
+    await cmsApi.recordAdClick(id);
+    setAdvertisements(prev => prev.map(ad => ad.id === id ? { ...ad, clicks: (ad.clicks || 0) + 1 } : ad));
+  }, []);
+
+  const recordAdImpression = useCallback(async (id: string) => {
+    await cmsApi.recordAdImpression(id);
+    setAdvertisements(prev => prev.map(ad => ad.id === id ? { ...ad, impressions: (ad.impressions || 0) + 1 } : ad));
+  }, []);
+
   return (
     <CmsContext.Provider
       value={{
@@ -170,8 +199,12 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         getContact,
         faqList,
         settings,
+        advertisements,
         isLoading,
         refreshContent: loadAllCmsData,
+        refreshAds: loadAds,
+        recordAdClick,
+        recordAdImpression,
         isAdminAuthenticated,
         adminUser,
         adminLogin,

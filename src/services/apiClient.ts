@@ -8,7 +8,8 @@ import {
   AuditLogEntry, 
   AdminStats,
   SystemIntegrationStatus,
-  SystemConfigAudit
+  SystemConfigAudit,
+  AdvertisementItem
 } from '../types';
 
 const CACHE_KEY_CONTENT = 'gtj_cms_content_cache';
@@ -282,6 +283,70 @@ export const cmsApi = {
   async testSystemConnection(): Promise<{ success: boolean; status: SystemIntegrationStatus; message: string }> {
     return safeFetch('/api/admin/system/test-connection', {
       method: 'POST',
+      headers: getAuthHeaders()
+    });
+  },
+
+  // Advertisements (Public)
+  async fetchAds(placement?: string): Promise<AdvertisementItem[]> {
+    try {
+      const url = placement ? `/api/ads?placement=${encodeURIComponent(placement)}` : '/api/ads';
+      const res = await safeFetch<{ success: boolean; data: AdvertisementItem[] }>(url);
+      return res.data;
+    } catch {
+      return [];
+    }
+  },
+
+  async recordAdImpression(id: string): Promise<void> {
+    try {
+      await safeFetch(`/api/ads/${encodeURIComponent(id)}/impression`, {
+        method: 'POST'
+      });
+    } catch {
+      // Non-blocking
+    }
+  },
+
+  async recordAdClick(id: string): Promise<void> {
+    try {
+      await safeFetch(`/api/ads/${encodeURIComponent(id)}/click`, {
+        method: 'POST'
+      });
+    } catch {
+      // Non-blocking
+    }
+  },
+
+  // Advertisements (Admin Protected)
+  async adminFetchAds(): Promise<AdvertisementItem[]> {
+    const res = await safeFetch<{ success: boolean; data: AdvertisementItem[] }>('/api/admin/ads', {
+      headers: getAuthHeaders()
+    });
+    return res.data;
+  },
+
+  async adminCreateAd(adData: Partial<AdvertisementItem>): Promise<AdvertisementItem> {
+    const res = await safeFetch<{ success: boolean; data: AdvertisementItem; message: string }>('/api/admin/ads', {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(adData)
+    });
+    return res.data;
+  },
+
+  async adminUpdateAd(id: string, updates: Partial<AdvertisementItem>): Promise<AdvertisementItem> {
+    const res = await safeFetch<{ success: boolean; data: AdvertisementItem; message: string }>(`/api/admin/ads/${encodeURIComponent(id)}`, {
+      method: 'PUT',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(updates)
+    });
+    return res.data;
+  },
+
+  async adminDeleteAd(id: string): Promise<void> {
+    await safeFetch(`/api/admin/ads/${encodeURIComponent(id)}`, {
+      method: 'DELETE',
       headers: getAuthHeaders()
     });
   }

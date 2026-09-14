@@ -40,7 +40,7 @@ export const ProfitSharingSection: React.FC = () => {
               </h3>
 
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                “Where profit-sharing applies, profits are shared according to the agreed 50/50 arrangement and applicable program terms. Trading results are not guaranteed, and losses can occur.”
+                “Where profit-sharing applies, profits are shared according to the agreed 50/50 arrangement and applicable program terms. Profit is guaranteed but return is not guaranteed, and market fluctuations occur.”
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">

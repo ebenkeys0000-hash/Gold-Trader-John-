@@ -260,42 +260,21 @@ export const TradingMenteeSection: React.FC<TradingMenteeSectionProps> = ({ onAp
           </div>
         </div>
 
-        {/* SECTION: TRADING MENTEE PROFIT-SHARING DISCLAIMER */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-amber-950/25 border-2 border-amber-500/40 shadow-2xl space-y-4 max-w-4xl mx-auto">
-          <div className="flex items-center space-x-2.5 text-amber-400">
-            <AlertCircle className="w-6 h-6 shrink-0" />
-            <h4 className="text-lg font-bold tracking-tight text-white">
-              ❗ Trading Mentee Disclaimer
-            </h4>
-          </div>
-
-          <div className="space-y-3 text-sm text-slate-300 leading-relaxed">
-            <p>
-              “{profitSharing.replace(/^“|”$/g, '')}”
-            </p>
-            <p className="text-slate-200 font-medium">
-              Once you have developed sufficient trading ability through the mentorship program and are independently producing profitable setups, the profit-sharing arrangement will stop, even if you continue following the trades and signals.
-            </p>
-            <div className="pt-2 border-t border-amber-900/40 text-xs sm:text-sm text-amber-200/90 font-medium">
-              “{disclaimer.replace(/^“|”$/g, '')}”
+        {/* Call to Action */}
+        <div className="mt-12 text-center">
+          {isInactive ? (
+            <div className="inline-block py-3.5 px-8 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 font-semibold text-sm">
+              Currently unavailable
             </div>
-          </div>
-
-          <div className="pt-2">
-            {isInactive ? (
-              <div className="w-full py-3 px-6 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 font-semibold text-sm text-center">
-                Currently unavailable
-              </div>
-            ) : (
-              <button
-                onClick={onApply}
-                className="py-3 px-6 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 flex items-center space-x-2 transition-all"
-              >
-                <span>{ctaText}</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            )}
-          </div>
+          ) : (
+            <button
+              onClick={onApply}
+              className="inline-flex items-center space-x-2 py-3.5 px-8 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm sm:text-base shadow-lg shadow-blue-600/30 transition-all active:scale-[0.99]"
+            >
+              <span>{ctaText}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          )}
         </div>
       </div>
     </section>

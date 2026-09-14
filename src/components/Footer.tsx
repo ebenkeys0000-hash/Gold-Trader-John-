@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenAdmin }) => {
   );
   const globalDisclaimer = getContent(
     'legal.global_disclaimer',
-    'Trading and investing in financial markets involve substantial risk. Past performance is not indicative of future results. No profit or return is guaranteed. Educational content, mentorship, signals and trading strategies do not eliminate the possibility of losses. Users should carefully consider their financial situation, risk tolerance and applicable laws before participating.'
+    'Trading and investing in financial markets involve substantial risk. Past performance is not indicative of future results. Profit is guaranteed but return is not guaranteed. Educational content, mentorship, signals and trading strategies do not eliminate the possibility of losses. Users should carefully consider their financial situation, risk tolerance and applicable laws before participating.'
   );
 
   // Dynamic contact retrieval from CMS

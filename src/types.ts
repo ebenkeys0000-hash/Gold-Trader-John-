@@ -97,6 +97,28 @@ export interface FaqItem {
   updated_at: string;
 }
 
+export type AdPlacement = 'top_bar' | 'floating_card' | 'in_feed' | 'all';
+export type AdTheme = 'amber' | 'blue' | 'emerald' | 'purple' | 'rose';
+
+export interface AdvertisementItem {
+  id: string;
+  title: string;
+  tagline: string;
+  badge: string;
+  cta_text: string;
+  cta_url: string;
+  is_external: boolean;
+  image_url?: string;
+  placement: AdPlacement;
+  theme: AdTheme;
+  status: 'active' | 'inactive';
+  impressions: number;
+  clicks: number;
+  display_order: number;
+  sponsor_label?: string;
+  updated_at: string;
+}
+
 export interface GlobalSettings {
   website_name: string;
   logo: string;
@@ -111,6 +133,7 @@ export interface GlobalSettings {
   mentee_program_enabled: boolean;
   investor_program_enabled: boolean;
   google_sheets_url?: string;
+  google_apps_script_url?: string;
   google_sheets_configured?: boolean;
 }
 

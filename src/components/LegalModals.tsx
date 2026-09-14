@@ -11,7 +11,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ activeModal, onClose }
   const { getContent } = useCms();
   const globalDisclaimer = getContent(
     'home.risk_disclaimer',
-    'Trading financial markets involves significant risk and the possibility of losing some or all of the capital committed. No profit or return is guaranteed. Only commit capital you can afford to lose.'
+    'Trading financial markets involves significant risk and the possibility of losing some or all of the capital committed. Profit is guaranteed but return is not guaranteed. Only commit capital you can afford to lose.'
   );
 
   if (!activeModal) return null;
@@ -47,14 +47,16 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ activeModal, onClose }
                 <strong>CRITICAL STATUTORY NOTICE:</strong> {globalDisclaimer}
               </div>
 
-              <h4 className="font-bold text-white text-base">1. No Guaranteed Returns</h4>
-              <p>
-                Gold Trader John Trading World does not offer, promise, or imply guaranteed profits, risk-free returns, or fixed income under any circumstances. All market outcomes are uncertain. Historical trade statistics, signal performance, or educational examples do not guarantee future results.
+              <h4 className="font-bold text-white text-base">1. No Fixated Amount or Guaranteed Daily/Weekly Returns</h4>
+              <p className="whitespace-pre-line">
+                No Fixated amount or Guaranteed daily or Weekly Returns
+                {'\n'}Gold Trader John Trading World does not offer, promise, or imply guaranteed profits that you can earn daily or weekly, risk-free returns, or fixed income under any circumstances. All market outcomes also carry risk. Historical trade statistics, signal performance, or educational examples do not guarantee future results. 
+                {'\n'}Only following my instructions if you're a student, mentee or investor I am trading for, keeps you safe in the market
               </p>
 
               <h4 className="font-bold text-white text-base">2. Risk of Total Capital Loss</h4>
               <p>
-                Leveraged trading allows participants to control large market positions with a relatively small initial deposit. While this can amplify gains, it equally amplifies losses. You may sustain a rapid loss of some or all of your deposited capital. You should never commit or trade with funds that you cannot comfortably afford to lose entirely.
+                Leveraged trading allows participants to control large market positions with a relatively small initial deposit. While this can amplify gains, it equally amplifies losses. You may sustain a rapid loss of some or all of your deposited capital, if care is not taken and instructions to control the trades are not followed, You should never commit or trade with funds that you cannot comfortably afford to lose entirely.
               </p>
 
               <h4 className="font-bold text-white text-base">3. Educational & Mentorship Purpose</h4>
@@ -83,7 +85,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ activeModal, onClose }
 
               <h4 className="font-bold text-white text-base">3. 50/50 Profit Sharing Framework</h4>
               <p>
-                Where profit-sharing applies to designated trading-channel participation, profits are shared according to the agreed 50/50 arrangement and applicable program terms. Trading results are never guaranteed and losses can occur. Participants must confirm complete understanding before entering the channel.
+                Where profit-sharing applies to designated trading-channel participation, profits are shared according to the agreed 50/50 arrangement and applicable program terms. Profit is guaranteed but return is not guaranteed. Participants must confirm complete understanding before entering the channel.
               </p>
 
               <h4 className="font-bold text-white text-base">4. Intellectual Property</h4>

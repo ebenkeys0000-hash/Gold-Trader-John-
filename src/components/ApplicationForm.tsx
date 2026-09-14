@@ -127,7 +127,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
     const errs: Record<string, string> = {};
 
     if (!formData.checkboxRiskNotGuaranteed) {
-      errs.checkboxRiskNotGuaranteed = 'You must acknowledge that trading involves substantial risk and profits are not guaranteed.';
+      errs.checkboxRiskNotGuaranteed = 'You must acknowledge that trading involves substantial risk and profit is guaranteed but return is not guaranteed.';
     }
     if (!formData.checkboxProfitSharing) {
       errs.checkboxProfitSharing = 'You must acknowledge the profit-sharing terms applicable to your selected program.';
@@ -865,7 +865,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
               )}
 
               <div className="space-y-4">
-                {/* Checkbox 1: Substantial Risk & No Guaranteed Profits */}
+                {/* Checkbox 1: Substantial Risk & Profit Guaranteed But Return Not Guaranteed */}
                 <label className="flex items-start space-x-3.5 p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-700 transition-colors cursor-pointer group">
                   <input
                     type="checkbox"
@@ -875,7 +875,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
                   />
                   <div className="space-y-1">
                     <span className="text-sm font-medium text-white group-hover:text-blue-300 transition-colors">
-                      “I understand that financial trading involves substantial risk and that profits are not guaranteed.” *
+                      “I understand that financial trading involves substantial risk and that profit is guaranteed but return is not guaranteed.” *
                     </span>
                     <p className="text-xs text-slate-400">
                       Market volatility can cause fluctuations and capital loss.
